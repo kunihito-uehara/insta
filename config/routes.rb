@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
   resources :contacts
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
