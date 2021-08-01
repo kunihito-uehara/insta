@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Insta</title>
+    <title>インスタ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+  <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+  <%= yield %>
   </body>
 </html>
