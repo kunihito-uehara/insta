@@ -21,18 +21,22 @@ class ContactsController < ApplicationController
 
   # POST /contacts or /contacts.json
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.build(contact_params)
 
     respond_to do |format|
       if @contact.save
         ContactMailer.contact_mail(@contact).deliver  ##追記
-        format.html { redirect_to @contact, notice: "Contact was successfully created." }
+        format.html { redirect_to @contact, notice: "投稿できました！" }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def confirm
+    @contact = current_user.contacts.build(contact_params)
+    render :new if @contact.invalid?
   end
 
   # PATCH/PUT /contacts/1 or /contacts/1.json
@@ -52,7 +56,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
+      format.html { redirect_to contacts_url, notice: "削除しました。" }
       format.json { head :no_content }
     end
   end
