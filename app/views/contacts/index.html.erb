@@ -14,8 +14,10 @@
 
   <tbody>
     <% @contacts.each do |contact| %>
+    
+    <%= image_tag(@contact.image.url) if @contact.image && @contact.image.url %>
       <tr>
-        <td><%= contact.name %></td>
+        <td><%= contact.user.name %></td>
         <td><%= contact.email %></td>
         <td><%= contact.content %></td>
         <td><%= link_to '確認', contact %></td>
@@ -28,4 +30,4 @@
 
 <br>
 
-<%= link_to '投稿', new_contact_path %>
+<%= link_to '投稿', new_contact_path,class:"btn btn-primary" %>
