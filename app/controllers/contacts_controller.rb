@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[edit update destroy]
+  before_action :authenticate_user!, only: %i[new edit update destroy]
 
   def index
     @contacts = Contact.all

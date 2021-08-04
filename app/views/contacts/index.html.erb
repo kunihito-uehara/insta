@@ -19,10 +19,11 @@
         <td><%= contact.title %></td>
         <td><%= contact.content %></td>
         <td> <%= image_tag contact.image.url if contact.image && contact.image.url%></td>
-
         <td><%= link_to '確認', contact %></td>
+        <% unless current_user.id != contact.user.id %><%#非表示設定%>
         <td><%= link_to '編集', edit_contact_path(contact) %></td>
         <td><%= link_to '削除', contact, method: :delete, data: { confirm: '削除しますか？' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
