@@ -1,0 +1,17 @@
+<h1>確認画面</h1>
+<p>この内容で投稿しますか？</p>
+<%= form_with(model: @contact, url: contacts_path(current_user.id), local: true) do |form| %>
+  <%= image_tag(@contact.image.url) if @contact.image && @contact.image.url %><br>
+  <%= @contact.content %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :user_id %>
+  <br><br>
+  <%= form.submit "投稿する" %>
+<% end %>
+<%= form_with(model: @contact, url: new_contact_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :user_id %>
+  <%= form.submit "戻る", name: "back" %>
+<% end %>

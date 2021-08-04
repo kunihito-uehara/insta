@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get 'sessions/new'
   resources :favorites, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
-  resources :contacts
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users do
+    member do
+      get :favorite
+    end
+  end
+  resources :contacts do
+   collection do
+    post :confirm
+   end
+  end
 end

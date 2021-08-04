@@ -1,2 +1,43 @@
 <h1><%= @user.name %>のページ</h1>
-<p>メールアドレス: <%= @user.email %></p>
+
+<h4><%= link_to 'ユーザー情報を編集する', edit_user_path(@user) %></h4>
+
+<p>
+  <strong>ユーザー名：</strong>
+  <%= @user.name %>
+</p>
+<p>
+  <strong>メールアドレス：</strong>
+  <%= @user.email %>
+</p>
+<p><strong>プロフィール画像：</strong></p>
+<p>
+  <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+</p>
+
+<p id="notice"><%= notice %></p>
+
+<h1><%= @user.name %>の投稿一覧</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>投稿画像</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.user.name %></td>
+        <td><%= image_tag(contact.image.url) if contact.image && contact.image.url %></td>
+        <td><%= link_to '詳細画面', contact_path(contact.id) %></td>
+        <td><%= link_to '編集する', edit_contact_path(contact.id) %></td>
+        <td><%= link_to '削除する', contact_path(contact.id), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3><%= link_to '新規投稿', new_contact_path %></h3>
+<h4><%= link_to 'お気に入り投稿を見る', favorite_user_url %></h4>
+<h4><%= link_to 'すべての投稿を見る', contacts_path %></h4>

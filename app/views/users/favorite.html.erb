@@ -1,0 +1,23 @@
+<h1>お気に入り投稿一覧</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>投稿ユーザー名</th>
+      <th>投稿画像</th>
+      <th>投稿内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.favorite_contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.user.name %></td>
+        <td><%= image_tag(contact.image.url) if contact.image && contact.image.url %></td>
+        <td><%= contact.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h4><%= link_to '投稿一覧画面', contacts_path %></h4>
+<h4><%= link_to "プロフィールへ戻る", user_path(current_user.id) %></h4>

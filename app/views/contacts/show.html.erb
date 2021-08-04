@@ -11,20 +11,10 @@
 <p>
   <strong>画像</strong>
   <%= image_tag(@contact.image.url) if @contact.image && @contact.image.url %>
-
-  <%= image_tag　@contact.image.url %>
 </p>
-<%= link_to '編集', edit_feed_path(@contact) %> |
-<%= link_to '戻る', contacts_path %>
-
 <p>
   <strong>名前:</strong>
   <%= @contact.user.name %>
-</p>
-
-<p>
-  <strong>メール:</strong>
-  <%= @contact.email %>
 </p>
 
 <p>
