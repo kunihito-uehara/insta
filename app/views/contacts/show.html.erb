@@ -7,7 +7,6 @@
     <%= link_to 'お気に入りする', favorites_path(contact_id: @contact.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
 <p>
   <strong>画像</strong>
   <%= image_tag(@contact.image.url) if @contact.image && @contact.image.url %>

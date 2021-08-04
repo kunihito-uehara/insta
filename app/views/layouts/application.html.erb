@@ -13,6 +13,17 @@
   <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
+  <div class="header">
+  <div class="btn__container">
+  <a href="#" class="btn">
+    <i class="fab fa-instagram"></i>
+    <span>instagram</span>
+  </a> 
+      <div class="header-title">インスタあぷり</div>
+      <div class="header-list">
+        <ul>
+        </ul>
+  </div>
   <% if logged_in? %>
       <%= link_to "プロフィール", user_path(current_user.id) %>
       <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
@@ -22,5 +33,12 @@
       <%= link_to "ログイン", new_session_path %>
     <% end %>
   <%= yield %>
+  <div class="footer">
+      <div class="footer-logo">フッター</div>
+      <div class="footer-list">
+        <ul>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
