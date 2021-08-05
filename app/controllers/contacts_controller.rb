@@ -35,7 +35,6 @@ class ContactsController < ApplicationController
   end
 
   def confirm
-    
     @contact = current_user.contacts.build(contact_params)
     render :new if @contact.invalid?
   end
