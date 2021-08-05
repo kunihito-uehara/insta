@@ -29,8 +29,7 @@ class ContactsController < ApplicationController
         redirect_to @contact, notice: "投稿できました！" 
         #render :show, status: :created, location: @contact
       else
-        render :new, status: :unprocessable_entity
-        render json: @contact.errors, status: :unprocessable_entity
+        render :new
       end
     end
   end
@@ -45,16 +44,13 @@ class ContactsController < ApplicationController
        redirect_to @contact, notice: "Contact was successfully updated."
        #render :show, status: :ok, location: @contact
       else
-       render :edit, status: :unprocessable_entity
-       render json: @contact.errors, status: :unprocessable_entity
+        render :edit
       end
   end
 
   def destroy
     @contact.destroy
-    redirect_to contacts_url, notice: "削除しました。"
-      head :no_content
-      redirect_to contacts_path
+    redirect_to contacts_path, notice: "削除しました。"
   end
 
   private
