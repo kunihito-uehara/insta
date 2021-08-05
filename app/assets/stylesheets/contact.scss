@@ -22,10 +22,12 @@
 }
 
 .footer {
+	position: fixed; /*←絶対位置*/
+	bottom: 0; /*下に固定*/
 	background-color: #2f5167;
 	color: #fff;
-	height: 30px;
-	padding: 25px;
+	height: 13px;
+	padding: 20px;
 }
 .footer-logo {
 	float: left;

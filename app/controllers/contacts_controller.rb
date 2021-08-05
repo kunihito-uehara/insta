@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
     #respond_to do |format|
     else
       if @contact.save
-        ContactMailer.contact_mail(@contact).deliver
+        # ContactMailer.contact_mail(@contact).deliver
         redirect_to @contact, notice: "投稿できました！" 
         #render :show, status: :created, location: @contact
       else
