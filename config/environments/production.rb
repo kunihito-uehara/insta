@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'https://dashboard.heroku.com/apps/desolate-mountain-27073' }
+  config.action_mailer.default_url_options = { host: 'https://desolate-mountain-27073.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
